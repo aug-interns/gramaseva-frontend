@@ -25,7 +25,9 @@ export const Home = () => {
                 <Link to={'/certificate-requests'}>
                     <Button>View Requests</Button>
                 </Link>
-                <Button>Add Users</Button>
+                <Link to={'/add-user'}>
+                    <Button>Add Users</Button>
+                </Link>
             </MainPage>
         )
     } else {
