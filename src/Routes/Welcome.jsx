@@ -1,16 +1,28 @@
-import { Button, Card, CardContent, Stack, Typography } from "@mui/material"
-import { Link } from "react-router-dom"
+import { Button, Card, CardContent, CircularProgress, Stack, Typography } from "@mui/material"
+import { Link, useParams, useSearchParams } from "react-router-dom"
 import { useAuthContext } from "@asgardeo/auth-react"
 
 export const Welcome = () => {
     const { signIn } = useAuthContext();
+    const [ queryParams, _ ] = useSearchParams()
+
+    const auth_redirecting = queryParams.get("auth_redirecting") === 'true'
 
     return (
         <Card sx={{ width: '100%' }}>
             <CardContent>
-                <Typography variant="h5" align="center" sx={{ mb: 3 }}>Welcome to GramaSeva</Typography>
-                <Stack direction={{ xs: 'column', sm: 'row' }} justifyContent={'center'} alignItems={'center'} spacing={2}>
-                    <Button variant="contained" size="large" onClick={ () => signIn() }>Get Started</Button>
+                <Stack direction={{ xs: 'column'}} justifyContent={'center'} alignItems={'center'} spacing={2}>
+                    { auth_redirecting ? (
+                    <>
+                        <Typography>Please wait, You will be redirected</Typography>
+                        <CircularProgress/>
+                    </>
+                    ) : (
+                    <>
+                        <Typography variant="h5" align="center" sx={{ mb: 3 }}>Welcome to GramaSeva</Typography>
+                        <Button variant="contained" size="large" onClick={ () => signIn() }>Get Started</Button>
+                    </>
+                    ) }
                 </Stack>
             </CardContent>
         </Card>
