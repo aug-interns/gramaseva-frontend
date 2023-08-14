@@ -1,10 +1,11 @@
-import { Button } from "@mui/material"
+import { Button, Stack, Typography } from "@mui/material"
 import { MainPage } from "../Components/Templates/MainPage"
 import { useAuthContext } from "@asgardeo/auth-react"
 import { useEffect, useState } from "react"
 import { ROLES } from "../Constants/Roles"
 import { Link } from "react-router-dom"
-import { RESOURCE_URLS } from "../configs"
+import { CheckBoxOutlined, HelpCenterRounded, PersonAddAlt1Rounded, RequestQuote, ViewQuiltOutlined } from "@mui/icons-material"
+import { LargeButton } from "../Components/LargeButton"
 
 export const Home = () => {
 
@@ -24,54 +25,31 @@ export const Home = () => {
 
     if (role === ROLES.GRAMASEVAKA) {
         return (
-            <MainPage title={'Home'}>
-                <Link to={'/certificate-requests'}>
-                    <Button>View Requests</Button>
-                </Link>
-                <Link to={'/add-user'}>
-                    <Button>Add Users</Button>
-                </Link>
-                <Button onClick={() => {
-                    httpRequest({
-                        headers: {
-                            Accept: "application/json",
-                        },
-                        method: "GET",
-                        url: `${RESOURCE_URLS.AddressCheckService}/greeting?name=asdf`,
-                        attachToken: true,
-                        withCredentials: true
-                    }).then((data) => {
-                        console.log(data)
-                    }).catch((err) => {
-                        console.log(err)
-                    })
-                }}>Send</Button>
+            <MainPage title={'Home'} hideGoBack>
+                <Stack direction={'row'} spacing={2}>
+                    <Link to={'/certificate-requests'}>
+                        <LargeButton icon={<ViewQuiltOutlined fontSize="large"/>} text={"View Requests"}/>
+                    </Link>
+                    <Link to={'/add-user'}>
+                        <LargeButton icon={<PersonAddAlt1Rounded fontSize="large"/>} text={"Add Users"}/>
+                    </Link>
+                </Stack>
             </MainPage>
         )
     } else {
         return (
             <MainPage title={'Home'}>
-                <Link to={'/request'}>
-                    <Button>Request for Certificate</Button>
-                </Link>
-                <Link to={'/status'}>
-                    <Button>Check Status</Button>
-                </Link>
-                <Button onClick={() => {
-                    httpRequest({
-                        headers: {
-                            Accept: "application/json",
-                        },
-                        method: "GET",
-                        url: `${RESOURCE_URLS.AddressCheckService}/greeting?name=asdf`,
-                        attachToken: true,
-                        withCredentials: true
-                    }).then((data) => {
-                        console.log(data)
-                    }).catch((err) => {
-                        console.log(err)
-                    })
-                }}>Send</Button>
+                <Stack direction={'row'} spacing={2}>
+                    <Link to={'/request'}>
+                        <LargeButton icon={<RequestQuote fontSize="large"/>} text={"Request Certificate"}/>
+                    </Link>
+                    <Link to={'/status'}>
+                        <LargeButton icon={<CheckBoxOutlined fontSize="large"/>} text={"Check Status"}/>
+                    </Link>
+                    <Link to={'/request-help'}>
+                        <LargeButton icon={<HelpCenterRounded fontSize="large"/>} text={"Request Help"}/>
+                    </Link>
+                </Stack>
             </MainPage>
         )
     }

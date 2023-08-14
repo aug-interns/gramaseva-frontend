@@ -33,6 +33,10 @@ export const ProcessRequest = () => {
                     <Typography>Address</Typography>
                     <Button variant='contained' onClick={onAddressCheck}>Verify</Button>
                 </Stack>
+                <Stack direction={'row'} justifyContent={'space-between'}>
+                    <Typography>Police Check</Typography>
+                    <Button variant='contained' onClick={onAddressCheck}>Verify</Button>
+                </Stack>
                 <Stack direction={'row'} justifyContent={'space-between'} spacing={2}>
                     <Button fullWidth>Reject</Button>
                     <Button variant='contained' fullWidth>Verify</Button>

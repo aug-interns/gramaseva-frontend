@@ -12,6 +12,7 @@ import { RequestStatus } from "./Routes/RequestStatus";
 import { CertificateRequests } from "./Routes/CertificateRequests";
 import { ProcessRequest } from "./Routes/ProcessRequest";
 import { AddUser } from "./Routes/AddUser";
+import { RequestHelp } from "./Routes/RequestHelp";
 
 const router = createBrowserRouter(createRoutesFromElements(
   <Route element={<RootLayout/>}>
@@ -30,6 +31,7 @@ const router = createBrowserRouter(createRoutesFromElements(
 				<Route path="certificate-requests" element={<CertificateRequests/>}/>
 				<Route path="certificate-requests/:id" element={<ProcessRequest/>}/>
 				<Route path="add-user" element={<AddUser/>}/>
+				<Route path="request-help" element={<RequestHelp/>}/>
 			</Route>
 		</Route>
   </Route>

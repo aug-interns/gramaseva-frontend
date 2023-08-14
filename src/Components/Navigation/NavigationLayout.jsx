@@ -60,7 +60,7 @@ export const NavigationLayout = () => {
 
     const theme = useTheme();
     const navigate = useNavigate();
-    const { signOut } = useAuthContext()
+    const { signOut, state } = useAuthContext()
 
     const [ open, setDrawerOpen ] = useState(false);
 
@@ -91,9 +91,10 @@ export const NavigationLayout = () => {
                         GramaSeva
                       </Typography>
                     </Stack>
-                    <Box>
+                    <Stack direction={'row'} spacing={2} alignItems={'center'}>
+                      <Typography>{state.username}</Typography>
                       <Button variant="outlined" color="inherit" onClick={() => signOut()}>Logout</Button>
-                    </Box>
+                    </Stack>
                   </Stack>
                 </Toolbar>
             </AppBar>
