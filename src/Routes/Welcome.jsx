@@ -1,5 +1,5 @@
 import { Button, Card, CardContent, CircularProgress, Stack, Typography } from "@mui/material"
-import { Link, useParams, useSearchParams } from "react-router-dom"
+import { useSearchParams } from "react-router-dom"
 import { useAuthContext } from "@asgardeo/auth-react"
 
 export const Welcome = () => {
