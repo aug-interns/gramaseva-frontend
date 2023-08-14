@@ -1,4 +1,4 @@
-import { Button, Stack, Typography } from "@mui/material"
+import { Stack } from "@mui/material"
 import { MainPage } from "../Components/Templates/MainPage"
 import { useAuthContext } from "@asgardeo/auth-react"
 import { useEffect, useState } from "react"
@@ -9,7 +9,7 @@ import { LargeButton } from "../Components/LargeButton"
 
 export const Home = () => {
 
-    const { getDecodedIDToken, httpRequest, state } = useAuthContext()
+    const { getDecodedIDToken, state } = useAuthContext()
 
     console.log(state)
 
@@ -36,9 +36,9 @@ export const Home = () => {
                 </Stack>
             </MainPage>
         )
-    } else {
+    } else if (role === ROLES.PUBLIC_USER) {
         return (
-            <MainPage title={'Home'}>
+            <MainPage title={'Home'} hideGoBack>
                 <Stack direction={'row'} spacing={2}>
                     <Link to={'/request'}>
                         <LargeButton icon={<RequestQuote fontSize="large"/>} text={"Request Certificate"}/>
