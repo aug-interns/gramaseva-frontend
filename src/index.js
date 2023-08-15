@@ -12,7 +12,11 @@ const config = {
   signOutRedirectURL: "http://localhost:3000/home",
   clientID: "Pxs3QfEoddu4FtcX_SPfGoIAc68a",
   baseUrl: "https://api.asgardeo.io/t/zetcco",
-  scope: [ "openid", "profile", "app_roles", "urn:zetcco:identitycheckserviceendpo:check_identity urn:zetcco:addresscheckserviceendpoi:address_check"],
+  scope: [ 
+    "openid", 
+    "profile",
+    "app_roles",
+    "urn:zetcco:identitycheckserviceendpo:check_identity urn:zetcco:addresscheckserviceendpoi:address_check urn:zetcco:supportserviceendpoint909:request_help"],
   resourceServerURLs: [
     ...Object.values(RESOURCE_URLS)
   ]
