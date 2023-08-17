@@ -28,19 +28,13 @@ export const ProcessRequest = () => {
     }
 
     const onPoliceCheck = async () => {
-        const response = true
+        const response = 'clear'
         setCheckStatuses({...checkStatuses, police: response})
     }
 
     const isNull = checkStatuses.address === null && checkStatuses.nic === null && checkStatuses.police === null 
-    const isApprovable = checkStatuses.address === true && checkStatuses.nic === true && checkStatuses.police === true 
-    const isAnyRejected = checkStatuses.address === false || checkStatuses.nic === false || checkStatuses.police === false
-
-    console.group()
-    console.log(`isNull: ${isNull}`)
-    console.log(`isApprovable: ${isApprovable}`)
-    console.log(`isRejectable: ${isAnyRejected}`)
-    console.groupEnd()
+    const isApprovable = checkStatuses.address === true && checkStatuses.nic === true && checkStatuses.police !== null 
+    const isAnyRejected = checkStatuses.address === false || checkStatuses.nic === false || checkStatuses.police !== null
 
     return (
         <MainPage title={`Request - ${id}`}>
@@ -65,8 +59,10 @@ export const ProcessRequest = () => {
                     <Typography>Police Check</Typography>
                     <Stack direction={'row'} spacing={2} alignItems={'center'}>
                         <Button variant='contained' onClick={onPoliceCheck} disabled={checkStatuses.police !== null || checkStatuses.address !== true}>Verify</Button>
-                        {checkStatuses.police === true && (<CheckCircle color='success'/>)}
-                        {checkStatuses.police === false && (<CloseOutlined color='error'/>)}
+                        {checkStatuses.police === 'clear' && (<Button color='success' variant='contained'>Clear</Button>)}
+                        {checkStatuses.police === 'low' && (<Button color='palette.success.light' variant='contained'>Low</Button>)}
+                        {checkStatuses.police === 'medium' && (<Button color='warning' variant='contained'>Medium</Button>)}
+                        {checkStatuses.police === 'high' && (<Button color='error' variant='contained'>High</Button>)}
                     </Stack>
                 </Stack>
                 <Stack direction={'row'} justifyContent={'space-between'} spacing={2}>
