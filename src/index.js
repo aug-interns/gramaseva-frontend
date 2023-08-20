@@ -8,14 +8,15 @@ import { RESOURCE_URLS } from './configs';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 const config = {
-  signInRedirectURL: "http://localhost:3000",
-  signOutRedirectURL: "http://localhost:3000",
-  clientID: "ypp8Y7VofAxvhKJBra8oos_KhpYa",
-  baseUrl: "https://api.asgardeo.io/t/interns",
+  signInRedirectURL: process.env.REACT_APP_AUTH_SIGN_IN_URL,
+  signOutRedirectURL: process.env.REACT_APP_AUTH_SIGN_OUT_URL,
+  clientID: process.env.REACT_APP_AUTH_ASGARDEO_CLIENT_ID,
+  baseUrl: process.env.REACT_APP_AUTH_ASGARDEO_ORG_URL,
   scope: [ 
     "openid app_roles", 
     "profile",
-    "urn:interns:indentitycheckserviceendp:check_nic urn:interns:policecheckserviceapiendp:check_police urn:interns:supportserviceivkendpoint:request_support urn:interns:addresscheckserviceendpoi:check_address urn:interns:requestserviceendpoint808:create_request urn:interns:requestserviceendpoint808:update_request urn:interns:requestserviceendpoint808:view_requests"],
+    process.env.REACT_APP_AUTH_ASGARDEO_SCOPES
+  ],
   resourceServerURLs: [
     ...Object.values(RESOURCE_URLS)
   ]
