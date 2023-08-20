@@ -1,6 +1,6 @@
 export const ROLES = {
-    GRAMASEVAKA: 'gramasevaka',
-    PUBLIC_USER: 'public_user',
+    GRAMASEVAKA: 'Gramasevaka',
+    PUBLIC_USER: 'Public_User',
     ANY: 'ROLE_ANY',
     NONE: 'ROLE_NONE'
 }

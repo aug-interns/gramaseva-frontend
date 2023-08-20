@@ -13,6 +13,7 @@ import { CertificateRequests } from "./Routes/CertificateRequests";
 import { ProcessRequest } from "./Routes/ProcessRequest";
 import { AddUser } from "./Routes/AddUser";
 import { RequestHelp } from "./Routes/RequestHelp";
+import { Typography } from "@mui/material";
 
 const router = createBrowserRouter(createRoutesFromElements(
   <Route element={<RootLayout/>}>

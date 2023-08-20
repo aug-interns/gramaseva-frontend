@@ -33,6 +33,9 @@ export const Home = () => {
                     <Link to={'/add-user'}>
                         <LargeButton icon={<PersonAddAlt1Rounded fontSize="large"/>} text={"Add Users"}/>
                     </Link>
+                    <Link to={'https://app.slack.com/client/T05NBL72M3J/C05NBLBQGHW'} target="_blank">
+                        <LargeButton icon={<HelpCenterRounded fontSize="large"/>} text={"Slack Channel"}/>
+                    </Link>
                 </Stack>
             </MainPage>
         )

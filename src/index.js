@@ -8,15 +8,14 @@ import { RESOURCE_URLS } from './configs';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 const config = {
-  signInRedirectURL: "http://localhost:3000/home",
-  signOutRedirectURL: "http://localhost:3000/home",
-  clientID: "Pxs3QfEoddu4FtcX_SPfGoIAc68a",
-  baseUrl: "https://api.asgardeo.io/t/zetcco",
+  signInRedirectURL: "http://localhost:3000",
+  signOutRedirectURL: "http://localhost:3000",
+  clientID: "ypp8Y7VofAxvhKJBra8oos_KhpYa",
+  baseUrl: "https://api.asgardeo.io/t/interns",
   scope: [ 
-    "openid", 
+    "openid app_roles", 
     "profile",
-    "app_roles",
-    "urn:zetcco:identitycheckserviceendpo:check_identity urn:zetcco:addresscheckserviceendpoi:address_check urn:zetcco:supportserviceendpoint909:request_help"],
+    "urn:interns:indentitycheckserviceendp:check_nic urn:interns:policecheckserviceapiendp:check_police urn:interns:supportserviceivkendpoint:request_support urn:interns:addresscheckserviceendpoi:check_address urn:interns:requestserviceendpoint808:create_request urn:interns:requestserviceendpoint808:update_request urn:interns:requestserviceendpoint808:view_requests"],
   resourceServerURLs: [
     ...Object.values(RESOURCE_URLS)
   ]

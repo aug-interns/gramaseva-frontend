@@ -1,4 +1,3 @@
 export const RESOURCE_URLS = {
-    AddressCheckService: "https://df55c058-764a-4e14-9f29-1f1353d7f1a2-dev.e1-us-east-azure.choreoapis.dev/hdsb/address-check-service/endpoint-9090-803/1.0.0",
-    SupportRequestService: "https://df55c058-764a-4e14-9f29-1f1353d7f1a2-dev.e1-us-east-azure.choreoapis.dev/hdsb/support-service/endpoint-9090-803/1.0.0"
+    Gateway: "https://cf3a4176-54c9-4547-bcd6-c6fe400ad0d8-dev.e1-us-east-azure.choreoapis.dev/hxrj/api-gateway-jtd/api-022/1.0.0",
 }
