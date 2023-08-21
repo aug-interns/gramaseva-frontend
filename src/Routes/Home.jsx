@@ -30,9 +30,9 @@ export const Home = () => {
                     <Link to={'/certificate-requests'}>
                         <LargeButton icon={<ViewQuiltOutlined fontSize="large"/>} text={"View Requests"}/>
                     </Link>
-                    <Link to={'/add-user'}>
+                    {/* <Link to={'/add-user'}>
                         <LargeButton icon={<PersonAddAlt1Rounded fontSize="large"/>} text={"Add Users"}/>
-                    </Link>
+                    </Link> */}
                     <Link to={'https://app.slack.com/client/T05NBL72M3J/C05NBLBQGHW'} target="_blank">
                         <LargeButton icon={<HelpCenterRounded fontSize="large"/>} text={"Slack Channel"}/>
                     </Link>

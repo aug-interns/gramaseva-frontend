@@ -8,7 +8,7 @@ export const RequestHelp = () => {
     const { httpRequest } = useAuthContext()
 
     const [ loading, setLoading ] = useState(false)
-    const [ response, setResponse ] = useState(null)
+    const [ response, setResponse ] = useState({ status: null })
     const [ supportRequestData, setSupportRequestData ] = useState({
         nic: '',
         description: '',
@@ -23,10 +23,10 @@ export const RequestHelp = () => {
                 method: "POST",
                 data: supportRequestData
             })
-            setResponse('success')
+            setResponse({ status: 'success', url: response.data })
         } catch (err) {
             console.error(err)
-            setResponse('fail')
+            setResponse({ status: 'fail', url: '' })
         } finally {
             setLoading(false)
         }
@@ -36,13 +36,13 @@ export const RequestHelp = () => {
         <MainPage title={'Request Help'}>
             <Stack direction={'column'} spacing={2}>
                 {
-                    response === 'success' ? (
+                    response.status === 'success' ? (
                         <Alert severity='success'>
                             <AlertTitle>Success</AlertTitle>
-                            Your support ticket has been added to the Slack channel
+                            Your support ticket has been added to the Slack channel. <a href={response.url}>View</a>
                         </Alert>
                     ) : (
-                        response === 'error' && (
+                        response.status === 'error' && (
                             <Alert severity='error'>
                                 <AlertTitle>Failed</AlertTitle>
                                 Failed to create a ticket

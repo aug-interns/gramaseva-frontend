@@ -18,7 +18,7 @@ export const Requests = () => {
 
     const { httpRequest } = useAuthContext()
     const [ loading, setLoading ] = useState(false)
-    const [ response, setResponse ] = useState(null)
+    const [ response, setResponse ] = useState({ status: null })
     const [ data, setData ] = useState(initState)
 
     const onRequest = async () => {
@@ -32,12 +32,11 @@ export const Requests = () => {
                 method: "POST",
                 data: {...data, phone: `+94${data.phone}`, no: parseInt(data.no), postalcode: parseInt(data.postalcode)}
             })
-            console.log(response)
-            setResponse('success')
+            setResponse({ status: 'success', msg: response.data })
             setData(initState)
         } catch (error) {
             console.error(error)
-            setResponse('fail')
+            setResponse({ status: 'error', msg: error.response.data.message })
         } finally {
             setLoading(false)
         }
@@ -50,16 +49,16 @@ export const Requests = () => {
     return (
         <MainPage title={'Request Certificate'}>
             {
-                response === 'success' ? (
+                response.status === 'success' ? (
                     <Alert severity='success' sx={{ m: 1 }}>
                         <AlertTitle>Success</AlertTitle>
-                        Your request has been recorded successfully
+                        Your request has been recorded successfully. Use <strong>{response.msg}</strong> to track your request.
                     </Alert>
                 ) : (
-                    response === 'error' && (
+                    response.status === 'error' && (
                         <Alert severity='error' sx={{ m: 1 }}>
                             <AlertTitle>Failed</AlertTitle>
-                            Failed to send a request
+                            { response.msg ? response.msg : "Failed to send request" }
                         </Alert>
                     )
                 )
