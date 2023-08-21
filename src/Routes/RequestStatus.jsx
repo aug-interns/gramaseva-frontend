@@ -8,14 +8,14 @@ export const RequestStatus = () => {
 
     const { httpRequest } = useAuthContext()
     const [ loading ,setLoading ] = useState(false)
-    const [ nic, setNic ] = useState('')
+    const [ reqId, setReqId ] = useState('')
     const [ status, setStatus ] = useState(null)
 
     const onRequest = async () => {
         try {
             setLoading(true)
             const response = await httpRequest({
-                url: `${RESOURCE_URLS.Gateway}/certificate/getReqRecord%2F${nic}`,
+                url: `${RESOURCE_URLS.Gateway}/certificate/getReqRecord%2F${reqId}`,
                 method: "GET"
             })
             if (response.data.length === 0) {
@@ -35,8 +35,8 @@ export const RequestStatus = () => {
     return (
         <MainPage title={'Status'}>
             <Stack direction={'column'} spacing={2}>
-                <TextField value={nic} onChange={e => { setNic(e.target.value) }} label='NIC' placeholder='Your NIC'/>
-                <Button variant='contained' disabled={loading || nic === ''} onClick={onRequest}>Check</Button>
+                <TextField value={reqId} onChange={e => { setReqId(e.target.value) }} label='Request ID' placeholder='Request ID given to your request'/>
+                <Button variant='contained' disabled={loading || reqId === ''} onClick={onRequest}>Check</Button>
                 {
                     status !== null && (
                         <Button variant='contained' onClick={onRequest} color={status.color}>{status.msg}</Button>

@@ -68,14 +68,15 @@ export const CertificateRequests = () => {
                             <Collapse in={exapandables.pending}>
                             {
                                 requests.pending.map(e => (
-                                    <Card key={e.NIC}>
+                                    <Card key={e.id}>
                                         <Stack direction={'row'} justifyContent={'space-between'} alignItems={'center'} m={2}>
                                             <Stack direction={'column'} spacing={0.2}>
-                                                <Typography variant='h6'>{e.NIC}</Typography>
+                                                <Typography variant='h6'>{e.id}</Typography>
+                                                <Typography variant='body2'><strong>NIC:&nbsp;&nbsp; </strong>{e.NIC}</Typography>
                                                 <Typography variant='body2'><strong>Address:&nbsp;&nbsp; </strong>{Object.values(e.address).filter(e => e !== "").join(", ")}</Typography>
                                                 <Typography variant='body2'><strong>Phone&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp; </strong>{e.phone}</Typography>
                                             </Stack>
-                                            <Link to={`/certificate-requests/${e.NIC}`}>
+                                            <Link to={`/certificate-requests/${e.id}`}>
                                                 <Button variant='contained'>Process</Button>
                                             </Link>
                                         </Stack>
@@ -95,14 +96,15 @@ export const CertificateRequests = () => {
                             <Collapse in={exapandables.completed}>
                             {
                                 requests.completed.map(e => (
-                                    <Card key={e.NIC}>
+                                    <Card key={e.id}>
                                         <Stack direction={'row'} justifyContent={'space-between'} alignItems={'center'} m={2}>
                                             <Stack direction={'column'} spacing={0.2}>
-                                                <Typography variant='h6'>{e.NIC}</Typography>
+                                                <Typography variant='h6'>{e.id}</Typography>
+                                                <Typography variant='body2'><strong>NIC:&nbsp;&nbsp; </strong>{e.NIC}</Typography>
                                                 <Typography variant='body2'><strong>Address:&nbsp;&nbsp; </strong>{Object.values(e.address).filter(e => e !== "").join(", ")}</Typography>
                                                 <Typography variant='body2'><strong>Phone&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp; </strong>{e.phone}</Typography>
                                             </Stack>
-                                            <Link to={`/certificate-requests/${e.NIC}`}>
+                                            <Link to={`/certificate-requests/${e.id}`}>
                                                 <Button variant='contained'>View</Button>
                                             </Link>
                                         </Stack>
@@ -122,14 +124,15 @@ export const CertificateRequests = () => {
                             <Collapse in={exapandables.rejected}>
                             {
                                 requests.rejected.map(e => (
-                                    <Card key={e.NIC}>
+                                    <Card key={e.id}>
                                         <Stack direction={'row'} justifyContent={'space-between'} alignItems={'center'} m={2}>
                                             <Stack direction={'column'} spacing={0.2}>
-                                                <Typography variant='h6'>{e.NIC}</Typography>
+                                                <Typography variant='h6'>{e.id}</Typography>
+                                                <Typography variant='body2'><strong>NIC:&nbsp;&nbsp; </strong>{e.NIC}</Typography>
                                                 <Typography variant='body2'><strong>Address:&nbsp;&nbsp; </strong>{Object.values(e.address).filter(e => e !== "").join(", ")}</Typography>
                                                 <Typography variant='body2'><strong>Phone&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp; </strong>{e.phone}</Typography>
                                             </Stack>
-                                            <Link to={`/certificate-requests/${e.NIC}`}>
+                                            <Link to={`/certificate-requests/${e.id}`}>
                                                 <Button variant='contained'>View</Button>
                                             </Link>
                                         </Stack>

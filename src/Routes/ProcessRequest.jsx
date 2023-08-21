@@ -12,6 +12,7 @@ export const ProcessRequest = () => {
     const { httpRequest } = useAuthContext()
 
     const [loading, setLoading] = useState(false)
+    const [ statusLoading, setStatusLoading ] = useState(false)
     const [ checkLoading, setCheckLoading ] = useState({
         nic: false,
         address: false,
@@ -101,14 +102,17 @@ export const ProcessRequest = () => {
 
     const onSetStatus = async (status) => {
         try {
+            setStatusLoading(true)
             const response = await httpRequest({
-                url: `${RESOURCE_URLS.Gateway}/certificate/updateRequest%2F${requestData.NIC}%2F${status}`,
+                url: `${RESOURCE_URLS.Gateway}/certificate/updateRequest%2F${requestData.id}%2F${status}`,
                 method: "PUT"
             })
             setRequestData({...requestData, status})
             console.log(response)
         } catch (error) {
             console.log(error)
+        } finally {
+            setStatusLoading(true)
         }
     }
 
@@ -175,8 +179,8 @@ export const ProcessRequest = () => {
                         {
                             requestData.status === 'pending' && (
                                 <Stack direction={'row'} justifyContent={'space-between'} spacing={2}>
-                                    <Button fullWidth disabled={isNull || !isAnyRejected} variant='contained' color='error'  onClick={() => { onSetStatus('rejected') }}>Reject</Button>
-                                    <Button variant='contained' fullWidth disabled={isNull || !isApprovable} color='success' onClick={() => { onSetStatus('completed') }}>Verify</Button>
+                                    <Button fullWidth disabled={isNull || !isAnyRejected || statusLoading} variant='contained' color='error'  onClick={() => { onSetStatus('rejected') }}>Reject</Button>
+                                    <Button variant='contained' fullWidth disabled={isNull || !isApprovable || statusLoading} color='success' onClick={() => { onSetStatus('completed') }}>Verify</Button>
                                 </Stack>
                             )
                         }
