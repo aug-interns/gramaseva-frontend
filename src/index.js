@@ -4,6 +4,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { AuthProvider } from '@asgardeo/auth-react';
 import { RESOURCE_URLS } from './configs';
+import { ThemeProvider, createTheme } from '@mui/material';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -22,11 +23,17 @@ const config = {
   ]
 }
 
+const theme = createTheme(
+  
+);
+
 root.render(
   <React.StrictMode>
-    <AuthProvider config={config}>
-      <App />
-    </AuthProvider>
+    <ThemeProvider theme={theme}>
+      <AuthProvider config={config}>
+        <App />
+      </AuthProvider>
+    </ThemeProvider>
   </React.StrictMode>
 );
 

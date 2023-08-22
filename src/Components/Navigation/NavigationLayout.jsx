@@ -88,7 +88,7 @@ export const NavigationLayout = () => {
                           <MenuIcon/>
                       </IconButton>
                       <Typography variant="h6">
-                        GramaSeva
+                        <strong>Grama</strong>Check
                       </Typography>
                     </Stack>
                     <Stack direction={'row'} spacing={2} alignItems={'center'}>
